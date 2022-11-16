@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GIF채팅</title>
+</head>
+<body>
+<div>F12를 눌러 콘솔 탭과 network 탭을 확인하세요</div>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  const socket = io.connect("ws://localhost:8005", {
+      path: '/socket.io',
+      transports: ['websocket'],
+  });
+  socket.on('news', function (data) {
+      console.log(data);
+      socket.emit('reply', 'hello node.js');
+  });
+</script>
+</body>
+</html>
